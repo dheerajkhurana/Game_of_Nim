@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>CityU NIM</title>
+             <link href="main.css" type="text/css" rel="stylesheet" />
+              <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+              </script>
+        </head>
+        <body>
+            <header>
+                <h1>NIM of CityU Residence</h1>
+                <h3>The Ultimate Game of Nim</h3>
+            </header>
+            
+            <nav>
+                <ul class="navigation">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html">Play Now!</a></li>
+                    <li><a href="three.html">Game of Nim</a></li>
+                    <li><a href="four.html">Prime Nim</a></li>
+                    <li><a href="five.html">Claude Shannon</a></li>
+                </ul>               
+            </nav>
+            <h2 id="headline">
+            Game of Nim @ CityU residence
+            </h2>
+            
+            <div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="halls"> <p style="position:absolute; top:70px;" class="yo" id="yol">Hall 1 </p><br/> <img id="follow" src="build.png" alt="Hall 1" title="Hall 1" /></div>
+            <br/><br/><br/>
+            <div class="halls"> <p style="position:absolute; top:230px;" class="yo" id="yo2">Hall 2 </p><br/><img id="follow" src="build.png" alt="Hall 2" title="Hall 2" /></div>
+            <br/><br/><br/>
+
+            <div class="halls"> <p style="position:absolute; top:360px;" class="yo" id="yo3">Hall 3 </p><img id="follow" src="build.png" alt="Hall 3" title="Hall 3" /></div>
+            <br/><br/><br/>
+            <div class="halls"> <p style="position:absolute; top:490px;" class="yo" id="yo4">Hall 4 </p><img id="follow" src="build.png" alt="Hall 4" title="Hall 4" /></div>
+            <br/><br/><br/>
+
+        </div>
+
+        <div class="col-md-8">
+            <br/><br/>
+            <div id="hall1div">
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <div class="glyphicon glyphicon-user  students hall1"></div>
+                <button class="btn btn-primary rem" onclick="remove('hall1div')">Remove</button>
+            </div>
+
+            <br/><br/><br/><br/>
+
+            <div id="hall2div">
+                <div class="glyphicon glyphicon-user  students hall2"></div>
+                <div class="glyphicon glyphicon-user  students hall2"></div>
+                <div class="glyphicon glyphicon-user  students hall2"></div>
+                <div class="glyphicon glyphicon-user  students hall2"></div>
+                <div class="glyphicon glyphicon-user  students hall2"></div>
+                <button class="btn btn-primary rem" onclick="remove('hall2div')">Remove</button>
+            </div>
+
+            <br/><br/>
+
+            <div id="hall3div">
+                <div class="glyphicon glyphicon-user  students hall3"></div>
+
+                <button class="btn btn-primary rem" onclick="remove('hall3div')">Remove</button>
+            </div>
+            <br/><br/>
+            <div id="hall4div">
+                <div class="glyphicon glyphicon-user  students hall4"></div>
+                <div class="glyphicon glyphicon-user  students hall4"></div>
+                <div class="glyphicon glyphicon-user  students hall4"></div>
+                <button class="btn btn-primary rem" onclick="remove('hall4div')">Remove</button>
+            </div>
+            <br/><br/>
+            <br/><br/>
+            <button id="computermove" class="btn btn-primary rem" onclick="calculateMove()">Computer's turn</button>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+<script type="text/javascript">
+
+
+    var hall_list=['hall1div', 'hall2div', 'hall3div', 'hall4div'];
+
+    function checkWin() {
+        var hall, students;
+
+        for(var i=0; i<4; ++i) {
+            hall = document.getElementById(hall_list[i]);
+            students = hall.getElementsByClassName("students");
+            if (students.length != 0)return 0;
+        }
+        return 1;
+
+    }
+
+    function remove(hall_name){
+        var hall=document.getElementById(hall_name);
+
+        var students=hall.getElementsByClassName("students");
+        var len=students.length;
+        console.log(students.length);
+        if(len==0){
+            console.log("No elements left");
+            alert("No elements left");
+        }
+        else {
+            students[len-1].remove();
+        }
+        //if(checkWin()==1)alert("User wins!");
+
+    }
+
+    function calculateMove(){
+        var xor=0;
+        var hall, students;
+        var hallvalue=[];
+        var numberofstudent=[];
+        for(var i=0; i<4; ++i){
+            hall=document.getElementById(hall_list[i]);
+            students=hall.getElementsByClassName("students");
+            numberofstudent.push(students.length);
+            hallvalue.push(students);
+            console.log("xoring ",xor, students.length);
+            xor=xor^students.length;
+           // console.log(students.);
+
+
+
+        }
+        for(var i=0; i<4; ++i){
+            console.log("students:",numberofstudent[i]);
+        }
+        numberofstudent.sort();
+        hallvalue.sort(function (a,b){
+                    return a.length-b.length;
+                }
+        );
+
+        //the case in which the computer loses
+        if(xor==0){
+
+            if(numberofstudent[3]==0){
+                alert("User wins");
+                return;
+
+            }
+            else{
+                console.log("removing last element");
+                hallvalue[3][hallvalue[3].length-1].remove();//remove the last element of the row with one elements
+            }
+        }
+        //the case in which the computer wins
+        else{
+
+            for(var i=0; i<4; ++i){
+                var xor_local=xor;
+                xor_local=xor_local^numberofstudent[i];
+                for(var j=1; j<=numberofstudent[i]; ++j){
+                    var xor_new=xor_local^(numberofstudent[i]-j);
+                    if(xor_new==0){
+                        console.log(numberofstudent[i], j, numberofstudent[i]-j);
+                        console.log(xor_new);
+                        console.log("xorlocal",xor_local);
+                        console.log("i",i);
+                        console.log("j",j);
+                        for(var x=1; x<=j; ++x){
+
+                            hallvalue[i][hallvalue[i].length-1].remove();
+                        }
+
+                        if(checkWin()==1)alert("Computer wins!");
+                        return;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+        
+    </script>
+<br>
+            <footer>
+                 <p>Copyright &copy; 2016 Game of CityU Residence. All rights reserved. </p>
+            </footer>
+              
+        </body>
+    </html>

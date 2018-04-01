@@ -1,0 +1,135 @@
+body{
+    width: auto;
+    background-color: #EEE;
+    font-family: tahoma;
+}
+
+#container{
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.hello{
+    margin-left: 300px;
+    
+    margin-right: 300px;
+    color: red;
+}
+.helloo{
+    margin-left: 300px;
+    
+    margin-right: 300px;
+    color: blue;
+}
+
+
+
+.hee{
+    margin-left: 300px;
+    
+    margin-right: 300px;
+    color: red;
+}
+
+
+#headline{
+	text-align: center;
+	color:blue;
+}
+
+
+
+#hall1div,#hall2div,#hall3div,#hall4div{
+	margin-top:60px;
+}
+
+
+
+.yo{
+	color:red;
+	position:absolute;
+}
+
+
+
+#follow{
+    float: left;
+    height: 120px;
+    width: 220px;
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-top: 0px; 
+}
+
+/*-------------------- CityU NIM common "banner" for all pages------------------------------- */
+
+header{
+    text-align: center;
+    background-color: brown;
+    color: white;
+    padding: 20px;
+    margin: 0;
+    font: bold 20px tahoma;
+    border-radius: 3%;
+    background-image: linear-gradient(to top,blue , red 40% );
+    letter-spacing: 3px;
+}
+
+#subhead{
+    text-align: right;
+    margin-top: 0px;
+    margin-right: 20px;
+    margin-bottom: 0px; 
+    padding:0;
+}
+
+.navigation li:hover{
+    background-color: red;
+    padding: 5px;
+    margin: 0px;
+}
+
+.navigation{
+    background-color: #000000;
+    padding: 8px;
+    list-style: none;
+    font: bold 14px tahoma;
+    margin: 0;
+    text-align: center;
+}
+
+.navigation li a{
+    padding: 50px;
+    color: white;
+}
+
+li{
+    display: inline-block;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* ---------------------------Main Footer----------------------------- */
+
+footer{
+    background-color: #000000;
+    color: white;
+    text-align: right;
+    clear: both;
+    padding: 15px;
+    font: bold 15px tahoma;
+}
+
+footer a{
+    color: #ff4d4d;
+}
+
+footer a:hover{
+    background-color: white;
+    padding: 5px;
+}
