@@ -1,0 +1,2 @@
+# Game_of_Nim
+The CityU Nim is based around the theme that there is a fire in the CityU residence and as a firefighter, you are supposed to get all the students out of their respective halls. In a single move you can take any number of students out of at most one hall. After your move, the computer takes over, and in a similar manner takes any number of students out of any hall of its choice. The one who takes out the last set of student wins
